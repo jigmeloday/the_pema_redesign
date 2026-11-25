@@ -1,0 +1,262 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/atkinson-hyperlegible-next";
+@import "@fontsource/noto-serif-tibetan/400.css";
+@import "@fontsource/noto-serif-tibetan/600.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * The PEMA Secretariat theme.
+ * Greens come from the logo and current site (#4A8C6F), navy from the site's
+ * #1E3A5F. Warm neutral surfaces with green as the accent; one soft warm colour reserved for help.
+ */
+:root {
+  color-scheme: light;
+
+  --background: oklch(0.982 0.004 85);
+  --foreground: oklch(0.32 0.022 190);
+
+  --card: oklch(0.997 0.002 85);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.997 0.002 85);
+  --popover-foreground: var(--foreground);
+
+  /* Quiet sage-pine: primary actions and links */
+  --primary: oklch(0.5 0.055 168);
+  --primary-foreground: oklch(0.99 0.005 160);
+
+  /* Soft sage: secondary actions */
+  --secondary: oklch(0.935 0.022 160);
+  --secondary-foreground: oklch(0.36 0.045 168);
+
+  --muted: oklch(0.952 0.006 85);
+  --muted-foreground: oklch(0.49 0.022 185);
+
+  /* shadcn "accent" is the hover/selected surface, not a highlight colour */
+  --accent: oklch(0.925 0.025 160);
+  --accent-foreground: oklch(0.34 0.042 168);
+
+  /* Warm clay: ONLY for "I Need Help" and crisis helplines */
+  --help: oklch(0.535 0.095 45);
+  --help-foreground: oklch(0.99 0.005 60);
+
+  /* Errors and irreversible actions only, never for crisis content */
+  --destructive: oklch(0.52 0.115 22);
+
+  /* Soft message surfaces (toasts): tinted background, dark text of same hue */
+  --success: oklch(0.935 0.035 155);
+  --success-foreground: oklch(0.37 0.06 160);
+  --info: oklch(0.935 0.025 240);
+  --info-foreground: oklch(0.37 0.065 250);
+  --warning: oklch(0.935 0.045 85);
+  --warning-foreground: oklch(0.37 0.065 65);
+  --error: oklch(0.935 0.028 22);
+  --error-foreground: oklch(0.37 0.1 25);
+
+  --border: oklch(0.905 0.008 85);
+  --input: oklch(0.63 0.025 170);
+  --ring: oklch(0.55 0.06 168);
+
+  --chart-1: oklch(0.5 0.055 168);
+  --chart-2: oklch(0.38 0.075 255);
+  --chart-3: oklch(0.65 0.09 195);
+  --chart-4: oklch(0.72 0.11 80);
+  --chart-5: oklch(0.58 0.09 310);
+
+  --radius: 1rem;
+
+  --sidebar: oklch(0.965 0.005 85);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  /* Navy: footer and formal government sections */
+  --navy: oklch(0.38 0.045 250);
+  --navy-foreground: oklch(0.97 0.01 250);
+}
+
+/* Dim, not black: easier on the eyes late at night */
+.dark {
+  color-scheme: dark;
+
+  --background: oklch(0.22 0.005 90);
+  --foreground: oklch(0.9 0.012 160);
+
+  --card: oklch(0.255 0.006 90);
+  --popover: oklch(0.275 0.006 90);
+
+  --primary: oklch(0.77 0.058 168);
+  --primary-foreground: oklch(0.22 0.04 170);
+
+  --secondary: oklch(0.31 0.03 175);
+  --secondary-foreground: oklch(0.93 0.025 163);
+
+  --muted: oklch(0.285 0.006 90);
+  --muted-foreground: oklch(0.74 0.022 175);
+
+  --accent: oklch(0.34 0.04 170);
+  --accent-foreground: oklch(0.95 0.02 163);
+
+  --help: oklch(0.76 0.075 50);
+  --help-foreground: oklch(0.22 0.04 45);
+
+  --destructive: oklch(0.75 0.085 22);
+
+  --success: oklch(0.31 0.04 155);
+  --success-foreground: oklch(0.91 0.045 155);
+  --info: oklch(0.31 0.04 240);
+  --info-foreground: oklch(0.91 0.045 240);
+  --warning: oklch(0.31 0.04 85);
+  --warning-foreground: oklch(0.91 0.045 85);
+  --error: oklch(0.31 0.04 22);
+  --error-foreground: oklch(0.91 0.045 22);
+
+  --border: oklch(0.36 0.007 90);
+  --input: oklch(0.56 0.03 180);
+  --ring: oklch(0.7 0.09 163);
+
+  --chart-1: oklch(0.77 0.085 163);
+  --chart-2: oklch(0.68 0.09 255);
+  --chart-3: oklch(0.74 0.08 195);
+  --chart-4: oklch(0.8 0.1 80);
+  --chart-5: oklch(0.72 0.09 310);
+
+  --sidebar: oklch(0.235 0.005 90);
+
+  --navy: oklch(0.29 0.035 250);
+}
+
+@theme inline {
+  /* Atkinson Hyperlegible Next: distinct letterforms, easy to read under stress.
+     Noto Serif Tibetan covers Dzongkha. */
+  --font-sans: 'Atkinson Hyperlegible Next Variable', 'Noto Serif Tibetan', system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-help: var(--help);
+  --color-help-foreground: var(--help-foreground);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring;
+  }
+  html {
+    @apply font-sans antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+    line-height: 1.65;
+    accent-color: var(--primary);
+    caret-color: var(--primary);
+  }
+  /* Headings are styled here, so no classes are needed on the elements */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: clamp(1.25rem, 1.175rem + 0.3vw, 1.5rem);
+  }
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+  h5 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+  h6 {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  p {
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+  /* Tibetan script needs more vertical room */
+  :lang(dz) {
+    line-height: 1.9;
+    letter-spacing: normal;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
