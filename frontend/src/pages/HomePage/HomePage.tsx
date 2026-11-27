@@ -1,7 +1,13 @@
+import { HeroSection } from './HeroSection';
+import { MoreSection } from './MoreSection';
+import { ServicesSection } from './ServicesSection';
+
 export function HomePage() {
   return (
     <>
-      <h1>The PEMA Secretariat</h1>
+      <HeroSection />
+      <ServicesSection />
+      <MoreSection />
     </>
   );
 }
